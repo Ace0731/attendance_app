@@ -32,8 +32,8 @@ android {
 
     defaultConfig {
         applicationId = "com.ace.attendance_app"
-        minSdk = 23
-        targetSdk = flutter.targetSdkVersion
+        minSdkVersion(24)
+        targetSdk = 34
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
@@ -50,8 +50,17 @@ android {
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true            // Enable code shrinking
+            isShrinkResources = true          // Enable resource shrinking
             signingConfig = signingConfigs.getByName("release")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        getByName("debug") {
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 
