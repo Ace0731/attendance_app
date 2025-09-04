@@ -147,9 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
     final minute = now.minute;
 
     String label;
-    if (hour < 9) {
+    if (hour == 9 && minute <= 30) {
       setState(() {
-        statusMessage = "⏰ Attendance can be marked only after 9:00 AM.";
+        statusMessage = "⏰ Attendance can be marked only after 9:30 AM.";
       });
       return;
     } else if (hour >= 14) {
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
         statusMessage = "❌ Attendance cannot be marked after 2:00 PM.";
       });
       return;
-    } else if (hour < 10 || (hour == 10 && minute == 0)) {
+    } else if (hour == 10 && minute <= 30) {
       label = "Present";
     } else if (hour < 13) {
       label = "Late";

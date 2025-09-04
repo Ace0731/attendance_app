@@ -52,7 +52,7 @@ Future<void> scheduleAttendanceNotifications() async {
         schedule: NotificationCalendar(
           weekday: dayOfWeek,
           hour: 9,
-          minute: 30,
+          minute: 50,
           second: 0,
           millisecond: 0,
           repeats: true,
